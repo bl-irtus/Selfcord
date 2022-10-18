@@ -109,4 +109,6 @@ class Guild:
 
 
         await self.http.request(method = "patch", endpoint = f"/guilds/{self.id}", headers={"origin":"https://discord.com", "referer":f"https://discord.com/channels/{self.id}/{random.choice(self.channels)}"},json=fields)
-
+    
+    async def create_webhook(self, name):
+        await self.http.request(method = "post", endpoint = f"/channels/{self.id}/webhooks", json = {"name": name})
